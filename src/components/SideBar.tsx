@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Button } from './Button';
 
@@ -20,7 +20,7 @@ interface GenreResponseProps {
 export function SideBar({ handleClickButton, selectedGenreId }: SideBarProps) {
   const [genres, setGenres] = useState<GenreResponseProps[]>([]);
 
-  useEffect(() => {
+  useMemo(() => {
     api.get<GenreResponseProps[]>('genres').then((response) => {
       setGenres(response.data);
     });
